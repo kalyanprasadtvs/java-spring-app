@@ -49,6 +49,13 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.11</version>
         </dependency>
+        
+        <!-- Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>2.1.2.RELEASE</version>
+        </dependency>
 
         <!-- Distributed tracing with OpenTracing (uncomment to enable) -->
        <!--  <dependency>
