@@ -9,7 +9,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+        http.csrf().disable()
+                   .anonymous().authorities("ROLE_ANONYMOUS")
+                   .and()
+                   .authorizeRequests()
+                   .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                   .antMatchers(HttpMethod.GET, appConfigHolder.getSecurity().getLoginUrl()).permitAll();
 
     }
 }
