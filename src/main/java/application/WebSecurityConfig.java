@@ -31,6 +31,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .headers()
             .cacheControl();
-        http..formLogin().disable();
+        http.formLogin().disable();
     }
 }
