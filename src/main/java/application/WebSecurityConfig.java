@@ -27,7 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.GET, "/login/**").permitAll()
             .anyRequest().authenticated()
             .and()
-            .formLogin().loginPage("/login").permitAll()
+//             .formLogin().loginPage("/login").permitAll()
+            .formLogin().disable()
             .and()
             .headers()
             .cacheControl();
