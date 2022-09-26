@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorities("ROLE_ANONYMOUS")
             .and()
             .authorizeRequests()
+            .and()
             .headers()
             .cacheControl()
             .and()
