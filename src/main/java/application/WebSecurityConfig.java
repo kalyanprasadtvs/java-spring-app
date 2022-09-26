@@ -21,14 +21,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .anonymous()
             .authorities("ROLE_ANONYMOUS")
             .and()
-            .authorizeRequests()
-            .and()
-            .headers()
-            .cacheControl()
-            .and()
+            .authorizeRequests()            
             .antMatchers("/").permitAll()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .antMatchers(HttpMethod.GET, "/login/**").permitAll()
-            .anyRequest().authenticated();
+            .anyRequest().authenticated()
+            .and()
+            .headers()
+            .cacheControl();
     }
 }
