@@ -17,17 +17,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                 .authorizeRequests()
 //                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 //                 .antMatchers(HttpMethod.GET,"/login/**").permitAll();
-        http.csrf().disable();
-        http
-        .anonymous()
+        http.csrf().disable()
+            .anonymous()
             .authorities("ROLE_ANONYMOUS")
             .and()
-        .headers()
-             .cacheControl()
-             .and()
-        .authorizeRequests()
+            .authorizeRequests()
+            .headers()
+            .cacheControl()
+            .and()
             .antMatchers("/").permitAll()
-             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .antMatchers(HttpMethod.GET, "/login/**").permitAll()
             .anyRequest().authenticated();
     }
