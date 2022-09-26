@@ -11,11 +11,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .anonymous().authorities("ROLE_ANONYMOUS")
-                .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/login/**").permitAll();
+//         http.csrf().disable()
+//                 .anonymous().authorities("ROLE_ANONYMOUS")
+//                 .and()
+//                 .authorizeRequests()
+//                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                 .antMatchers(HttpMethod.GET,"/login/**").permitAll();
+        http.csrf().disable();
+        http
+        .anonymous()
+            .authorities("ROLE_ANONYMOUS")
+            .and()
+        .headers()
+             .cacheControl()
+             .and()
+        .authorizeRequests()
+            .antMatchers("/").permitAll()
+             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/login/**").permitAll()
+            .anyRequest().authenticated();
     }
 }
