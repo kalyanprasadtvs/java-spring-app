@@ -23,7 +23,8 @@ public class WebSecurityConfig implements Filter { //extends WebSecurityConfigur
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws
                                                                                               IOException,ServletException {
         HttpServletResponse httpServletResponse=(HttpServletResponse)response;
-        httpServletResponse.setHeader("Custom-Filter-Header","Write Header using Filter");
+        httpServletResponse.setHeader("X-Content-Type-Options","nosniff");
+        httpServletResponse.setHeader("X-Content-Type-Options","");
         chain.doFilter(request, response);      // continue execution of other filter chain.
     }
     @Override
